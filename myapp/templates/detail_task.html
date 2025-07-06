@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Task Details{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow-sm p-4">
+      <h3 class="mb-3">{{ task.title }}</h3>
+
+      <dl class="row">
+        <dt class="col-sm-3">Assigned to</dt>
+        <dd class="col-sm-9">{{ task.user.username }}</dd>
+
+        <dt class="col-sm-3">Details</dt>
+        <dd class="col-sm-9">{{ task.content|default:"No additional details" }}</dd>
+
+        <dt class="col-sm-3">Created At</dt>
+        <dd class="col-sm-9">{{ task.created_at|date:"F j, Y, g:i a" }}</dd>
+
+        <dt class="col-sm-3">Due Date</dt>
+        <dd class="col-sm-9">
+          {% if task.due_date %}
+            {{ task.due_date|date:"F j, Y" }}
+          {% else %}
+            Not set
+          {% endif %}
+        </dd>
+
+        <dt class="col-sm-3">Completed</dt>
+        <dd class="col-sm-9">
+          {% if task.completed %}
+            <span class="badge bg-success">Completed ✔</span>
+          {% else %}
+            <span class="badge bg-warning text-dark">Pending ⏳</span>
+          {% endif %}
+        </dd>
+      </dl>
+
+      <div class="mt-4">
+        <a href="{% url 'update_task' task.pk %}" class="btn btn-primary me-2">Edit</a>
+        <a href="{% url 'delete_task' task.pk %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'tasks' %}" class="btn btn-secondary ms-2">Back to list</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 from myapp.models import Task
 
@@ -30,3 +30,8 @@ class CreateTask(LoginRequiredMixin, CreateView):
     template_name = 'create_task.html'
     fields = ['user', 'title', 'content', 'due_date']
     success_url = reverse_lazy('tasks')
+
+class DetailTask(LoginRequiredMixin, DetailView):
+    model = Task
+    template_name = 'detail_task.html'
+    fields = ['user', 'title', 'content', 'created_at', 'due_date', 'completed']
