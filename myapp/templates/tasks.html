@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <h2>Welcome, {{ user.username }}</h2>
+
+    <ul>
+      {% for task in tasks %}
+        {{ task.content }}
+        <li>
+          {{ task.title }} - {% if  task.completed %}✅{% else %}❌{% endif %} -
+            <a href="{% url 'update_task' task.pk %}"><small>Edit</small></a> or
+            <a href="{% url 'delete_task' task.pk %}"><small>Delete</small></a>
+        </li>
+      {% endfor %}
+    </ul>
+<form action="{% url 'logout' %}" method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn-logout">Logout</button>
+</form>
+{% endif %}
+
+
+{% endblock %}
