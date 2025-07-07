@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}Create Task{% endblock %}
 
@@ -9,7 +10,7 @@
       <h3 class="mb-3">New Task</h3>
       <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <button type="submit" class="btn btn-success">Save</button>
         <a href="{% url 'tasks' %}" class="btn btn-outline-secondary">Cancel</a>
       </form>
