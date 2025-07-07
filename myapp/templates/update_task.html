@@ -1,20 +1,31 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-{% block title %}Create Task{% endblock %}
+{% block title %}Edit Task{% endblock %}
 
 {% block content %}
+{% if user.is_authenticated and task.user == user %}
 <div class="row justify-content-center">
   <div class="col-md-8">
     <div class="card p-4 shadow">
-      <h3 class="mb-3">New Task</h3>
+      <h3 class="mb-3">Edit Task</h3>
       <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit" class="btn btn-success">Save</button>
+
+          <button type="submit" class="btn btn-success">Save</button>
+
         <a href="{% url 'tasks' %}" class="btn btn-outline-secondary">Cancel</a>
       </form>
     </div>
   </div>
 </div>
+{% else %}
+  <div class="alert alert-warning text-center mt-5">
+    🚨 <strong>Hold up, detective!</strong><br>
+    You’re trying to edit a task that’s not yours — sneaky, sneaky! 🕵️‍♂️🔍<br>
+    Why not stick to your own to-do list and avoid the trouble? 😜<br><br>
+    <a href="{% url 'tasks' %}" class="btn btn-outline-primary mt-3">Back to Your Tasks</a>
+  </div>
+{% endif %}
 {% endblock %}

@@ -1,0 +1,48 @@
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.glass-card .card-title a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.glass-card .card-title a:hover {
+  text-decoration: underline;
+  color: #d1eaff;
+}
+
+.glass-card .badge {
+  font-size: 0.9rem;
+  padding: 0.4em 0.6em;
+}
+
+.glass-card .card-text {
+  color: #e0e0e0;
+}
+
+.glass-card .btn-outline-primary,
+.glass-card .btn-outline-danger {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+.glass-card .btn-outline-primary:hover {
+  background-color: rgba(13, 110, 253, 0.1);
+}
+
+.glass-card .btn-outline-danger:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+}
+
