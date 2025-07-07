@@ -3,60 +3,57 @@
 
 {% block content %}
 <div class="container py-5">
-  <div class="card shadow-sm p-4 glass-card mx-auto" style="max-width: 800px;">
-    <h2 class="mb-4">{{ task.title }}</h2>
+    <div class="card shadow-sm p-4 glass-card mx-auto" style="max-width: 800px;">
+        <h2 class="mb-4">{{ task.title }}</h2>
 
-    <dl class="row">
-      <dt class="col-sm-3 text-muted">Assigned to</dt>
-      <dd class="col-sm-9">{{ task.user.username }}</dd>
 
-      <dt class="col-sm-3 text-muted">Details</dt>
-      <dd class="col-sm-9">{{ task.content|default:"No additional details" }}</dd>
+        <dl class="row">
+            <dt class="col-sm-3 text-muted">Assigned to</dt>
+            <dd class="col-sm-9">{{ task.user.username }}</dd>
 
-      <dt class="col-sm-3 text-muted">Created At</dt>
-      <dd class="col-sm-9">{{ task.created_at|date:"F j, Y, g:i a" }}</dd>
+            <dt class="col-sm-3 text-muted">Details</dt>
+            <dd class="col-sm-9">{{ task.content|default:"No additional details" }}</dd>
 
-      <dt class="col-sm-3 text-muted">Due Date</dt>
-      <dd class="col-sm-9">
-        {% if task.due_date %}
-          {{ task.due_date|date:"F j, Y" }}
-        {% else %}
-          Not set
-        {% endif %}
-      </dd>
+            <dt class="col-sm-3 text-muted">Created At</dt>
+            <dd class="col-sm-9">{{ task.created_at|date:"F j, Y, g:i a" }}</dd>
 
-      <dt class="col-sm-3 text-muted">Status</dt>
-      <dd class="col-sm-9">
-        {% if task.completed %}
-          <span class="badge bg-success bg-opacity-25 text-success">Completed ✔</span>
-        {% else %}
-          {% if task.is_overdue %}
-            <span class="badge bg-danger bg-opacity-50 text-danger">
+            <dt class="col-sm-3 text-muted">Due Date</dt>
+            <dd class="col-sm-9">
+                {% if task.due_date %}
+                {{ task.due_date|date:"F j, Y" }}
+                {% else %}
+                Not set
+                {% endif %}
+            </dd>
+
+            <dt class="col-sm-3 text-muted">Status</dt>
+            <dd class="col-sm-9">
+                {% if task.completed %}
+                <span class="badge badge-success-soft">Completed</span>
+                {% else %}
+                {% if task.is_overdue %}
+                <span class="badge badge-danger-soft">
               <i class="bi bi-exclamation-triangle-fill me-1"></i> Overdue
             </span>
-          {% else %}
-            <span class="badge bg-warning text-dark bg-opacity-25 text-warning">Pending ⏳</span>
-          {% endif %}
-        {% endif %}
-      </dd>
-    </dl>
+                {% else %}
+                <span class="badge badge-warning-soft">Pending</span>
+                {% endif %}
+                {% endif %}
+            </dd>
+        </dl>
 
-    <div class="mt-4 pt-3 border-top">
+        <div class="mt-4 pt-3 border-top">
 
-        <a href="{% url 'update_task' task.pk %}" class="btn me-2 text-white"
-   style="background-color: rgba(13, 110, 253, 0.75); border: none;">
-          <i class="fas fa-edit me-1"></i> Edit
-        </a>
-        <a href="{% url 'delete_task' task.pk %}" class="btn me-2 text-white"
-   style="background-color: rgba(220, 53, 69, 0.75); border: none;">
-          <i class="fas fa-trash me-1"></i> Delete
-        </a>
-
-      <a href="{% url 'tasks' %}" class="btn text-white"
-   style="background-color: rgba(108, 117, 125, 0.75); border: none;">
-        <i class="fas fa-arrow-left me-1"></i> Back to list
-      </a>
+            <a href="{% url 'update_task' task.pk %}" class="btn btn-glass-primary me-2">
+                <i class="fas fa-edit me-1"></i> Edit
+            </a>
+            <a href="{% url 'delete_task' task.pk %}" class="btn btn-glass-danger me-2">
+                <i class="fas fa-trash me-1"></i> Delete
+            </a>
+            <a href="{% url 'tasks' %}" class="btn btn-glass-secondary text-white">
+                <i class="fas fa-arrow-left me-1"></i> Back to list
+            </a>
+        </div>
     </div>
-  </div>
 </div>
 {% endblock %}

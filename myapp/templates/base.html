@@ -9,10 +9,13 @@
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <style>
     /* Background gradient */
-    body {
-      background: linear-gradient(135deg, #d4fc79, #96e6a1);
+        body {
+      background-image: url("/static/images/background.jpg");
+      background-size: cover;
+      background-position: center;
       background-attachment: fixed;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-repeat: no-repeat;
+      color: #fff; /* Optional: makes text easier to read */
     }
 
     /* Glass effect container */
@@ -57,18 +60,19 @@
   <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
   <div class="container">
     <!-- Social Icons on the left -->
-    <div class="d-flex align-items-center">
-      <a class="navbar-brand p-0 me-3" href="https://www.google.com" target="_blank" rel="noopener noreferrer">
-        <img src="{% static 'images/icons8-google-94.png' %}" alt="Google" width="30" height="30">
-      </a>
-      <a class="navbar-brand p-0 me-3" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-        <img src="{% static 'images/icons8-instagram-94.png' %}" alt="Instagram" width="30" height="30">
-      </a>
-      <a class="navbar-brand p-0" href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
-        <img src="{% static 'images/icons8-youtube-logo-94.png' %}" alt="YouTube" width="30" height="30">
-      </a>
-    </div>
-
+    {% if user.is_authenticated %}
+      <div class="d-flex align-items-center">
+        <a class="navbar-brand p-0 me-3" href="https://www.google.com" target="_blank" rel="noopener noreferrer">
+          <img src="{% static 'images/icons8-google-94.png' %}" alt="Google" width="30" height="30">
+        </a>
+        <a class="navbar-brand p-0 me-3" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+          <img src="{% static 'images/icons8-instagram-94.png' %}" alt="Instagram" width="30" height="30">
+        </a>
+        <a class="navbar-brand p-0" href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+          <img src="{% static 'images/icons8-youtube-logo-94.png' %}" alt="YouTube" width="30" height="30">
+        </a>
+      </div>
+    {% endif %}
     <!-- Navbar toggler button for small screens -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
             aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,32 +84,37 @@
       <ul class="navbar-nav d-flex align-items-end">
         {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link fs-5 py-2 px-3 d-flex align-items-center" href="{% url 'create_task' %}">
+          <a class="nav-link  fs-5 py-2 px-3 d-flex align-items-center " href="{% url 'create_task' %}">
             <img src="{% static 'images/icons8-pencil-drawing-94.png' %}" alt="Add" width="28" height="28" class="me-2">
             Add task
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link fs-5 py-2 px-3 d-flex align-items-center" href="{% url 'tasks' %}">
-            <img src="{% static 'images/icons8-touch-id-94.png' %}" alt="User" width="28" height="28" class="me-2">
+          <a class="nav-link  fs-5 py-2 px-3 d-flex align-items-center" href="{% url 'tasks' %}">
+            <img src="{% static 'images/park-ranger.png' %}" alt="User" width="28" height="28" class="me-2">
             {{ user.username }}
           </a>
         </li>
         <li class="nav-item">
           <form method="post" action="{% url 'logout' %}" class="d-inline">
             {% csrf_token %}
-            <button type="submit" class="nav-link fs-5 py-2 px-3 btn btn-link text-decoration-none p-0 m-0 align-baseline text-white">
-              🏃 Logout
+            <button type="submit" class="nav-link fs-5 py-2 px-3 btn btn-link text-decoration-none p-0 m-0 align-baseline text-white d-flex align-items-center">
+              <img src="{% static 'images/forest.png' %}" alt="Logout" width="24" height="24" class="me-2">
+              Logout
             </button>
+
           </form>
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link fs-5 py-2 px-3" href="{% url 'login' %}">🔑 Login</a>
+          <a class="nav-link fs-5 py-2 px-3" href="{% url 'login' %}">
+            <img src="{% static 'images/mushroom.png' %}" alt="animal" width="30" height="30">
+            Login
+          </a>
         </li>
         <li class="nav-item">
           <a class="nav-link fs-5 py-2 px-3" href="{% url 'register' %}">
-            <img src="{% static 'images/icons8-fingerprint-94.png' %}" alt="fingerprint" width="30" height="30">
+            <img src="{% static 'images/animal.png' %}" alt="animal" width="30" height="30">
             Signup
           </a>
         </li>
@@ -116,25 +125,15 @@
 </nav>
 
 
-  <!-- Main Content Area -->
-  <main class="container my-5 flex-grow-1">
-    <div class="glass-container">
-      {% if messages %}
-        {% for message in messages %}
-          <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-        {% endfor %}
-      {% endif %}
-
-      {% block content %}
-      {% endblock %}
-    </div>
-  </main>
+<main class="container my-5 flex-grow-1">
+  <div class="glass-container">
+    {% block content %}
+    {% endblock %}
+  </div>
+</main>
 
   <!-- Footer -->
-  <footer class="text-center py-3 mt-auto">
+  <footer class="text-center py-3 mt-auto sticky-bottom">
     <small>&copy; {{ year|default:2025 }} To-Do List App</small>
   </footer>
 

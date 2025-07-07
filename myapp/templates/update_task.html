@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block title %}Edit Task{% endblock %}
@@ -14,8 +15,8 @@
       <div class="mb-3">
         {{ form|crispy }}
       </div>
-      <button type="submit" class="btn btn-primary me-2">Save</button>
-      <a href="{% url 'tasks' %}" class="btn btn-outline-secondary">Cancel</a>
+      <button type="submit" class="btn btn-glass-save me-2">Save</button>
+      <a href="{% url 'tasks' %}" class="btn btn-glass-cancel">Cancel</a>
     </form>
 
   </div>

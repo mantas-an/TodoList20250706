@@ -4,7 +4,7 @@
 
 {% block content %}
   {% if user.is_authenticated %}
-    <div class="d-flex justify-content-center mb-4">
+    <div class="d-flex justify-content-center mb-4 glass-card">
       <h2>Welcome back, {{ user.username }}</h2>
     </div>
 
@@ -12,22 +12,22 @@
       <div class="row">
         {% for task in tasks %}
           <div class="col-md-6 col-lg-4 mb-4">
-            <div class="card h-100 glass-card text-black position-relative">
+            <div class="card h-100 glass-card  position-relative">
               <a href="{% url 'detail_task' task.pk %}" class="stretched-link"></a>
               <div class="card-body">
                 <h5 class="card-title">
                   {{ task.title }}
                   {% if task.completed %}
-                    <span class="badge bg-success bg-opacity-25 text-success">
+                    <span class="badge badge-success-soft">
                       <i class="bi bi-check-circle-fill me-1"></i> Completed
                     </span>
                   {% else %}
                     {% if task.is_overdue %}
-                      <span class="badge bg-danger bg-opacity-50 text-danger">
+                      <span class="badge badge-danger-soft">
                         <i class="bi bi-exclamation-triangle-fill me-1"></i> Overdue
                       </span>
                     {% else %}
-                      <span class="badge bg-warning text-dark bg-opacity-25 text-warning">
+                      <span class="badge badge-warning-soft">
                         <i class="bi bi-hourglass-split me-1"></i> Pending
                       </span>
                     {% endif %}
