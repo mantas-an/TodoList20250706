@@ -18,16 +18,16 @@
                 <h5 class="card-title">
                   {{ task.title }}
                   {% if task.completed %}
-                    <span class="badge bg-success">
+                    <span class="badge bg-success bg-opacity-25 text-success">
                       <i class="bi bi-check-circle-fill me-1"></i> Completed
                     </span>
                   {% else %}
                     {% if task.is_overdue %}
-                      <span class="badge bg-danger">
+                      <span class="badge bg-danger bg-opacity-50 text-danger">
                         <i class="bi bi-exclamation-triangle-fill me-1"></i> Overdue
                       </span>
                     {% else %}
-                      <span class="badge bg-warning text-dark">
+                      <span class="badge bg-warning text-dark bg-opacity-25 text-warning">
                         <i class="bi bi-hourglass-split me-1"></i> Pending
                       </span>
                     {% endif %}
@@ -39,6 +39,19 @@
               </div>
               <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between">
                 <!-- Add buttons or icons here if needed -->
+                {% if task.due_date %}
+                  {% if task.completed %}
+                    <small class="text-muted">Completed</small>
+                  {% else %}
+                    <small class="text-muted">
+                      {% if task.is_overdue %}
+                        Overdue by {{ task.due_date|timesince }}
+                      {% else %}
+                        Due in {{ task.due_date|timeuntil }}
+                      {% endif %}
+                    </small>
+                   {% endif %}
+                {% endif %}
               </div>
             </div>
           </div>
