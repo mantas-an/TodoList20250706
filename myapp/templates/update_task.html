@@ -7,7 +7,7 @@
 <div class="container py-5">
   <div class="card shadow-sm p-4 glass-card mx-auto" style="max-width: 1300px;">
     <h3 class="mb-4">Edit Task</h3>
-    {% if user.is_authenticated and task.user == user %}
+
     <form method="post" novalidate>
       {% csrf_token %}
       {{ form.non_field_errors }}
@@ -17,9 +17,7 @@
       <button type="submit" class="btn btn-primary me-2">Save</button>
       <a href="{% url 'tasks' %}" class="btn btn-outline-secondary">Cancel</a>
     </form>
-    {% else %}
-    <p>You are not authorized to edit this task.</p>
-    {% endif %}
+
   </div>
 </div>
 {% endblock %}

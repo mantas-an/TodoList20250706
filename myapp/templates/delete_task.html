@@ -11,9 +11,9 @@
 
       <form method="post">
         {% csrf_token %}
-        {% if user.is_authenticated and object.user == user %}
+
         <button type="submit" class="btn btn-danger">Yes, delete</button>
-        {% endif %}
+
         <a href="{% url 'tasks' %}" class="btn btn-outline-secondary ms-2">Cancel</a>
       </form>
     </div>

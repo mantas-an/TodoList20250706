@@ -103,6 +103,12 @@
         <li class="nav-item">
           <a class="nav-link fs-5 py-2 px-3" href="{% url 'login' %}">🔑 Login</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link fs-5 py-2 px-3" href="{% url 'register' %}">
+            <img src="{% static 'images/icons8-fingerprint-94.png' %}" alt="fingerprint" width="30" height="30">
+            Signup
+          </a>
+        </li>
         {% endif %}
       </ul>
     </div>
