@@ -248,4 +248,10 @@ body, a, button, input, textarea, select, label {
 
 
 
+.username-highlight {
+  color: #4CAF50; /* or any color that fits your forest theme */
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
 

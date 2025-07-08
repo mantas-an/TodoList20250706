@@ -9,7 +9,7 @@ class Task(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField(max_length=5000)
     created_at = models.DateTimeField(auto_now_add=True)
-    due_date = models.DateTimeField(null=False, blank=False) # jeigu lyginsim po to ateityje svarbu DateTimeField ne DateField
+    due_date = models.DateTimeField(null=False, blank=False) # jeigu lyginsim po to ateityje svarbu DateTimeField ne DateField # false padareme,kad butu ivedamass butinai laukas
     completed = models.BooleanField(default=False)
 
     class Meta:
