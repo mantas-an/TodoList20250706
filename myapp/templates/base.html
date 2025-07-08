@@ -57,21 +57,21 @@
 <body class="d-flex flex-column min-vh-100">
 
 
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
   <div class="container">
     <!-- Social Icons on the left -->
     {% if user.is_authenticated %}
-      <div class="d-flex align-items-center">
-        <a class="navbar-brand p-0 me-3" href="https://www.google.com" target="_blank" rel="noopener noreferrer">
-          <img src="{% static 'images/icons8-google-94.png' %}" alt="Google" width="30" height="30">
-        </a>
-        <a class="navbar-brand p-0 me-3" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-          <img src="{% static 'images/icons8-instagram-94.png' %}" alt="Instagram" width="30" height="30">
-        </a>
-        <a class="navbar-brand p-0" href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
-          <img src="{% static 'images/icons8-youtube-logo-94.png' %}" alt="YouTube" width="30" height="30">
-        </a>
-      </div>
+    <div class="d-flex align-items-center">
+      <a class="navbar-brand p-0 me-3" href="https://www.google.com" target="_blank" rel="noopener noreferrer">
+        <img src="{% static 'images/icons8-google-94.png' %}" alt="Google" width="30" height="30">
+      </a>
+      <a class="navbar-brand p-0 me-3" href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+        <img src="{% static 'images/icons8-instagram-94.png' %}" alt="Instagram" width="30" height="30">
+      </a>
+      <a class="navbar-brand p-0" href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+        <img src="{% static 'images/icons8-youtube-logo-94.png' %}" alt="YouTube" width="30" height="30">
+      </a>
+    </div>
     {% endif %}
     <!-- Navbar toggler button for small screens -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
@@ -83,6 +83,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
       <ul class="navbar-nav d-flex align-items-end">
         {% if user.is_authenticated %}
+
         <li class="nav-item">
           <a class="nav-link  fs-5 py-2 px-3 d-flex align-items-center " href="{% url 'create_task' %}">
             <img src="{% static 'images/icons8-pencil-drawing-94.png' %}" alt="Add" width="28" height="28" class="me-2">
@@ -98,7 +99,8 @@
         <li class="nav-item">
           <form method="post" action="{% url 'logout' %}" class="d-inline">
             {% csrf_token %}
-            <button type="submit" class="nav-link fs-5 py-2 px-3 btn btn-link text-decoration-none p-0 m-0 align-baseline text-white d-flex align-items-center">
+            <button type="submit"
+                    class="nav-link fs-5 py-2 px-3 btn btn-link text-decoration-none p-0 m-0 align-baseline text-white d-flex align-items-center">
               <img src="{% static 'images/forest.png' %}" alt="Logout" width="24" height="24" class="me-2">
               Logout
             </button>

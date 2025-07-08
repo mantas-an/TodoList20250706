@@ -226,3 +226,26 @@ body, a, button, input, textarea, select, label {
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
+
+
+.alert-forest {
+  background: linear-gradient(135deg, rgba(52, 105, 75, 0.25), rgba(33, 66, 51, 0.25));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #e2f7e9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.alert-forest .alert-link {
+  color: #b2f2bb;
+  font-weight: 500;
+}
+
+
+
+
+
+
+

@@ -13,7 +13,7 @@ class Task(models.Model):
     completed = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['completed', 'due_date']
 
     def __str__(self):
         return self.title

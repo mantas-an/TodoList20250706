@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
@@ -6,9 +7,10 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.utils import timezone
 
-from myapp.forms import SignUpForm
+from myapp.forms import SignUpForm, TaskUpdateForm
 from myapp.models import Task
 import random
+from django.db.models import Q
 
 
 # Create your views here.
@@ -21,18 +23,25 @@ class DashBoard(LoginRequiredMixin, ListView):
 
 
 
+
     def get_queryset(self):
         return Task.objects.filter(user=self.request.user)   #si vieta rodo tik userio taskus/uzduotis
 
+
+
+
+
 class UpdateTask(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
     model = Task
+    form_class = TaskUpdateForm
     template_name = 'update_task.html'
-    fields = ['title', 'content', 'due_date', 'completed']
     success_url = reverse_lazy('tasks')
 
     def test_func(self):
         task = self.get_object()
         return task.user == self.request.user
+
+
 
     #-------------------BE SITO APACIOJ---------------------
     #ISMES TIK 403 ERROR

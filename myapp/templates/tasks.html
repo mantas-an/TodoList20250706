@@ -58,9 +58,11 @@
         {% endfor %}
       </div>
     {% else %}
-      <div class="alert alert-info">
-        You have no tasks yet. <a href="{% url 'create_task' %}">Add one</a> to get started.
+      <div class="alert alert-forest glass-alert mt-4 text-light">
+        <i class="fas fa-leaf me-2"></i> You have no tasks yet.
+        <a href="{% url 'create_task' %}" class="alert-link text-decoration-underline">Add one</a> to get started.
       </div>
+
     {% endif %}
   {% else %}
     <div class="alert alert-warning">
