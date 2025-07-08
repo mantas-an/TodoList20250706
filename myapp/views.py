@@ -64,9 +64,10 @@ class DeleteTask(LoginRequiredMixin,UserPassesTestMixin, DeleteView):
 
 class CreateTask(LoginRequiredMixin, CreateView):
     model = Task
+    form_class = TaskUpdateForm
     template_name = 'create_task.html'
     #fields = ['user', 'title', 'content', 'due_date']
-    fields = ['title', 'content', 'due_date']
+
     success_url = reverse_lazy('tasks')
 
     def form_valid(self, form):

@@ -16,7 +16,7 @@
               <a href="{% url 'detail_task' task.pk %}" class="stretched-link"></a>
               <div class="card-body">
                 <h5 class="card-title">
-                  {{ task.title }}
+                  {{ task.title | truncatewords:5 }}
                   {% if task.completed %}
                     <span class="badge badge-success-soft">
                       <i class="bi bi-check-circle-fill me-1"></i> Completed
@@ -34,7 +34,7 @@
                   {% endif %}
                 </h5>
                 {% if task.content %}
-                  <p class="card-text text-muted">{{ task.content }}</p>
+                  <p class="card-text text-muted">{{ task.content | truncatewords:10 }}</p>
                 {% endif %}
               </div>
               <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between">

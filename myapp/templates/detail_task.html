@@ -15,12 +15,12 @@
             <dd class="col-sm-9">{{ task.content|default:"No additional details" }}</dd>
 
             <dt class="col-sm-3 text-muted">Created At</dt>
-            <dd class="col-sm-9">{{ task.created_at|date:"F j, Y, g:i a" }}</dd>
+            <dd class="col-sm-9">{{ task.created_at|date:"Y-m-d H:i" }}</dd>
 
             <dt class="col-sm-3 text-muted">Due Date</dt>
             <dd class="col-sm-9">
                 {% if task.due_date %}
-                {{ task.due_date|date:"F j, Y" }}
+                {{ task.due_date|date:"Y-m-d H:i" }}
                 {% else %}
                 Not set
                 {% endif %}
