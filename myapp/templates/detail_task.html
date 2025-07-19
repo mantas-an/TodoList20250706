@@ -12,7 +12,7 @@
             <dd class="col-sm-9">{{ task.user.username }}</dd>
 
             <dt class="col-sm-3 text-muted">Details</dt>
-            <dd class="col-sm-9">{{ task.content|default:"No additional details" }}</dd>
+            <dd class="col-sm-9">{{ task.content|linebreaks }}</dd>
 
             <dt class="col-sm-3 text-muted">Created At</dt>
             <dd class="col-sm-9">{{ task.created_at|date:"Y-m-d H:i" }}</dd>
