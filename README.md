@@ -11,9 +11,10 @@
 *Vartotojo sąsaja su užduotimis ir registracijos forma*
 
 ## 🛠️ Technologies  
-- **Backend**: Python 3.11, Django 4.2  
+- **Backend**: Python 3.11, Django 5.2.4  
 - **Database**: PostgreSQL  
-- **Frontend**: HTML5, Bootstrap 5  
+- **Frontend**: Bootstrap 5, django-crispy-forms  
+- **Utilities**: ASGiref, sqlparse  
 
 ## 🔧 Installation  
 1. Clone the repository:
