@@ -4,8 +4,8 @@
 
 ## 🖼️ Screenshots  
 <div align="center">
-  <img src="static/images/homepagex.png" width="45%" alt="Task List">
-  <img src="static/images/registerx.png" width="45%" alt="Register Form">
+  <img src="statics/images/homepagex.png" width="45%" alt="Task List">
+  <img src="statics/images/registerx.png" width="45%" alt="Register Form">
 </div>
 
 *Vartotojo sąsaja su užduotimis ir registracijos forma*
